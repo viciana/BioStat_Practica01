@@ -1,0 +1,19 @@
+# Todo lo generable con `make` (ver Makefile) queda fuera del repositorio
+img/
+practica01.pdf
+practica01.tex
+datos/*.csv
+datos/*.omv
+src/descripciones.rds
+# Restos de Emacs, LaTeX y R
+*~
+\#*\#
+*.aux
+*.log
+*.nav
+*.out
+*.snm
+*.toc
+*.vrb
+.Rhistory
+.RData

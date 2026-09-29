@@ -1,0 +1,45 @@
+#+LANGUAGE:  es
+#+OPTIONS:   num:t toc:nil \n:nil @:t ::t |:t  -:t f:t *:t <:t _:{} 
+#+OPTIONS:   TeX:t LaTeX:t skip:nil d:nil todo:t pri:nil tags:not-in-toc
+#+INFOJS_OPT: view:nil toc:nil ltoc:t mouse:underline buttons:0 path:http://orgmode.org/org-info.js
+#+EXPORT_SELECT_TAGS: export
+#+EXPORT_EXCLUDE_TAGS: noexport
+#+LINK_UP:   
+#+LINK_HOME: 
+#+XSLT:
+#+startup: beamer
+#+LaTeX_CLASS: beamer
+#+LATEX_CLASS_OPTIONS: [xcolor={usenames,svgnames,dvipsnames}]
+#+BEAMER_THEME: Montpellier
+#+BEAMER_COLOR_THEME: beaver
+#+BEAMER_FONT_THEME: serif
+#+LATEX_HEADER: \usepackage{listings}
+#+LATEX_HEADER: \usepackage{fancyvrb}
+#+LATEX_HEADER: \usepackage{fancybox}
+#+LATEX_HEADER: \usepackage{mathpazo}
+#+LATEX_HEADER: \usepackage{graphicx} 
+#+LATEX_HEADER: \usepackage[utf8]{inputenc} 
+#+LATEX_HEADER: \usepackage{enumerate}
+#+LATEX_HEADER: \usepackage{ctable}
+#+LATEX_HEADER: \usepackage{float} % provides the H option for float placement
+#+LATEX_HEADER: \AtBeginSubsection[]{\begin{frame}[plain]\tableofcontents[currentsubsection,sectionstyle=show/shaded,subsectionstyle=show/shaded/hide]\end{frame}}
+#+LATEX_HEADER: \lstset{keywordstyle=\color{blue}, commentstyle=\color{gray!90}, basicstyle=\ttfamily\small, columns=fullflexible, breaklines=true,linewidth=\textwidth, backgroundcolor=\color{gray!23}, basewidth={0.5em,0.4em}, literate={á}{{\'a}}1 {ñ}{{\~n}}1 {é}{{\'e}}1 {ó}{{\'o}}1 {º}{{\textordmasculine}}1}
+#+LATEX_HEADER: \lstnewenvironment{code}{\lstset{language=Haskell,basicstyle=\small\ttfamily}}{}
+#+LATEX_HEADER: \hypersetup{colorlinks=true, linkcolor=Blue, urlcolor=Blue}
+#+LATEX_HEADER: \let\insertpartnumber\relax
+#+LATEX_HEADER: \let\partname\relax
+#+LATEX_HEADER: \let\insertsectionnumber\relax
+#+LATEX_HEADER: \let\sectionname\relax
+#+LATEX_HEADER: \let\insertsubsectionnumber\relax
+#+LATEX_HEADER: \let\subsectionname\relax
+#+LATEX_HEADER: \AtBeginPart{\frame{\partpage}}
+#+LATEX_HEADER: \AtBeginSection{\frame{\sectionpage}}
+#+LATEX_HEADER: \AtBeginSubsection{\frame{\subsectionpage}}
+#+LATEX_HEADER: \AtBeginSubsubsection{\frame{\subsubsectionpage}}
+#+LATEX_HEADER: \usepackage{tcolorbox}
+
+COMMENT #+LATEX_HEADER: \DefineVerbatimEnvironment{verbatim}{Verbatim}{fontsize=\tiny, formatcom = {\color{black!70}}}
+#+PROPERTY:  tangle yes
+#+PROPERTY:  comments org
+#+PROPERTY: session *R*
+

@@ -1,0 +1,95 @@
+% ---------------------------------------------------------------------
+% 10_tipos_variables.tex
+% Tabla "Clasificación de las variables estadísticas" (bloque 1), con los
+% iconos de tipo de medida de JAMOVI y flechas de degradación de escala.
+% Rehecha a partir de anterior/imagenes/TabTipoVar.html.
+% Se compila aparte (TikZ choca con ctable en la presentación):
+%   make img/tipos_variables.pdf
+% ---------------------------------------------------------------------
+\documentclass[border=3pt]{standalone}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{mathpazo}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{array}
+\usepackage{multirow}
+\usepackage[table,dvipsnames]{xcolor}
+\usepackage{tikz}
+\usetikzlibrary{tikzmark,arrows.meta}
+\graphicspath{{recursos/}}
+
+\definecolor{cabecera}{HTML}{CCCCCC}
+\definecolor{pie}{HTML}{E6E6E6}
+\definecolor{flecha}{HTML}{C0392B}
+\newcommand{\ico}[1]{\raisebox{-0.25ex}{\includegraphics[height=1.9ex]{#1}}}
+\newcommand{\jmv}[2]{\ico{#1}\,\textsf{\small #2}}
+\newcommand{\sub}{\hspace*{1em}$\bullet$\ }
+\newcommand{\cab}{\hspace*{0.15cm}}   % sangría de los rótulos (deja sitio a una flecha)
+\newcommand{\mk}[1]{\tikzmark{#1}}
+\newcommand{\ej}[1]{\ {\small\itshape\color{darkgray}(#1)}}
+\renewcommand{\arraystretch}{1.25}
+
+\begin{document}
+\begin{tabular}{|m{2.3cm}|m{1.9cm}|m{6.5cm}|>{\centering\arraybackslash}m{2.1cm}|>{\centering\arraybackslash}m{1.9cm}|}
+\hline
+\rowcolor{cabecera}
+\multicolumn{1}{|l|}{\textbf{Grupo}} & \multicolumn{1}{l|}{\textbf{En JAMOVI}} &
+\multicolumn{1}{l|}{\textbf{Tipo}} & \multicolumn{1}{c|}{\textbf{Cardinalidad}} &
+\multicolumn{1}{c|}{\textbf{\shortstack{Proyección\\numérica}}} \\
+\hline
+% --- Cualitativas -----------------------------------------------------
+\multirow{6}{2.3cm}{\textbf{Cualitativas}\\ \small(categóricas, factores)\mk{cuali}}
+ & \multirow{3}{*}{\jmv{cardinal.png}{Nominal}}
+ & \multicolumn{3}{l|}{\mk{col}\cab\textbf{Nominales}} \\
+\cline{3-5}
+ & & \mk{dic}\sub Dicotómicas o binomiales\ej{Sexo, HTA} & $N = 2$ &
+   \multirow{5}{*}{$\mathbb{N}$} \\
+\cline{3-4}
+ & & \mk{mul}\sub Multinomiales\ej{GrupoSang, color del pelo} & \multirow{4}{*}{$1 < N < \infty$} & \\
+\cline{2-3}
+ & \multirow{3}{*}{\jmv{ordinal.png}{Ordinal}} & \mk{ord}\cab\textbf{Ordinales} & & \\
+ & & \sub Ordenadas\ej{Estudios} & & \\
+ & & \sub Likert: cuasi-intervalo\ej{acuerdo de 1 a 5}\newline\hspace*{1.75em}{\small\itshape\color{darkgray}en psicología se suelen tratar como intervalo} & & \\
+\hline
+% --- Cuantitativas ----------------------------------------------------
+\multirow{6}{2.3cm}{\mk{cuanti}\textbf{Cuantitativas}\\ \small(numéricas)}
+ & \multirow{6}{*}{\jmv{numerica.png}{Continua}}
+ & \multicolumn{3}{l|}{\cab\textbf{Escala de intervalos} {\footnotesize(«restar» tiene sentido)}} \\
+\cline{3-5}
+ & & \mk{d1}\sub Discreta\ej{año de nacimiento} & 2 a $\infty$ & $\mathbb{N}$ o $\mathbb{Z}$ \\
+\cline{3-5}
+ & & \mk{c1}\sub Continua\ej{temperatura en ºC} & $\infty$ & $\mathbb{R}$ \\
+\cline{3-5}
+ & & \multicolumn{3}{l|}{\cab\textbf{Escala de razones} {\footnotesize(«dividir» tiene sentido)}} \\
+\cline{3-5}
+ & & \mk{d2}\sub Discreta\ej{nº de hijos, Convivientes} & 2 a $\infty$ & $\mathbb{N}$ \\
+\cline{3-5}
+ & & \mk{c2}\sub Continua\ej{Peso, Talla, PAS} & $\infty$ & $\mathbb{R}$ \\
+\hline
+% --- Identificador ----------------------------------------------------
+\textbf{Identificador} & \jmv{ID.png}{ID} & {\small Clave de cada caso (no se analiza)} &
+ $N = n$ & -- \\
+\hline
+\rowcolor{pie}
+\multicolumn{5}{|>{\raggedright\arraybackslash}p{\dimexpr 14.7cm+8\tabcolsep+4\arrayrulewidth\relax}|}{\small
+ \textcolor{flecha}{\textbf{$\uparrow$}}\ Las escalas pueden \emph{degradarse},
+ mediante una transformación de variables, a otra de menor precisión
+ (p.\,ej.\ Edad $\rightarrow$ grupos de edad).} \\
+\hline
+\end{tabular}%
+\begin{tikzpicture}[remember picture, overlay,
+    deg/.style={flecha, line width=0.7pt, {Circle[length=3pt]}-{Stealth[length=5pt]}}]
+  % flechas verticales en la sangría de los subítems de "Tipo" (a la
+  % izquierda del punto), para dejar sitio a los ejemplos
+  \def\x{0.17cm}
+  \draw[deg] ([xshift=\x,yshift=0.7ex]pic cs:mul) to ([xshift=\x,yshift=0.7ex]pic cs:dic);
+  \draw[deg] ([xshift=\x,yshift=0.7ex]pic cs:c1)  to ([xshift=\x,yshift=0.7ex]pic cs:d1);
+  \draw[deg] ([xshift=\x,yshift=0.7ex]pic cs:c2)  to ([xshift=\x,yshift=0.7ex]pic cs:d2);
+  % Ordinales -> Nominales, en el margen izquierdo de la celda
+  \draw[deg] ([xshift=-0.1cm,yshift=0.3ex]pic cs:ord) to ([xshift=-0.1cm,yshift=1.1ex]pic cs:col);
+  % Cuantitativas -> Cualitativas
+  \coordinate (a) at (pic cs:cuanti); \coordinate (b) at (pic cs:cuali);
+  \draw[deg] ([xshift=1.2cm,yshift=2.6ex]a) to ([xshift=1.2cm,yshift=-1.2ex]a |- b);
+\end{tikzpicture}
+\end{document}

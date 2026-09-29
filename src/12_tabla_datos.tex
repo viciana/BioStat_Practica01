@@ -1,0 +1,46 @@
+% ---------------------------------------------------------------------
+% 12_tabla_datos.tex
+% Esquema de una tabla de datos: individuos (filas) x variables
+% (columnas).  Rehecha y traducida a partir de
+% anterior/G/eda_introduction1.png (unidades pasadas a kg y cm).
+% Se compila aparte:   make img/tabla_datos.pdf
+% ---------------------------------------------------------------------
+\documentclass[border=3pt]{standalone}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{mathpazo}
+\usepackage{graphicx}
+\usepackage{array}
+\usepackage{multirow}
+\usepackage[table]{xcolor}
+
+\definecolor{cabecera}{HTML}{E6E6E6}
+\newcolumntype{C}[1]{>{\centering\arraybackslash}m{#1}}
+\renewcommand{\arraystretch}{1.2}
+\newcommand{\pv}{$\vdots$}
+
+\begin{document}
+\begin{tabular}{c|>{\centering\arraybackslash}m{2.1cm}C{1.3cm}C{1.1cm}C{1.2cm}C{1.2cm}C{2.4cm}C{1.6cm}|}
+\multicolumn{2}{c}{} & \multicolumn{6}{c}{\Large\bfseries Variables} \\[2pt]
+\cline{2-8}
+\rowcolor{cabecera}
+\cellcolor{white}
+ &
+ & \textbf{Sexo}\newline{\small(H/M)}
+ & \textbf{Edad}\newline{\small(años)}
+ & \textbf{Peso}\newline{\small(kg)}
+ & \textbf{Talla}\newline{\small(cm)}
+ & \textbf{Fumador}\newline{\small(0 = No, 1 = Sí)}
+ & \textbf{Etnia} \\
+\cline{2-8}
+\multirow{7}{*}{\rotatebox{90}{\Large\bfseries Individuos\ }}
+ & \textbf{Paciente 1}  & H & 59 & 79 & 175 & 0 & Blanca \\
+ & \textbf{Paciente 2}  & M & 67 & 64 & 157 & 1 & Negra \\
+ & \textbf{Paciente 3}  & M & 73 & 70 & 150 & 0 & Asiática \\
+ & \pv & \pv & \pv & \pv & \pv & \pv & \pv \\
+ & \pv & \pv & \pv & \pv & \pv & \pv & \pv \\
+ & \pv & \pv & \pv & \pv & \pv & \pv & \pv \\
+ & \textbf{Paciente 75} & H & 48 & 86 & 183 & 0 & Blanca \\
+\cline{2-8}
+\end{tabular}
+\end{document}
