@@ -60,3 +60,22 @@ En la presentación los datos y los scripts `datos/*.R` se enlazan en
   `listings`, `multirow`, `mathpazo` y `tcolorbox` (probado con TeX Live 2022).
 - **ImageMagick** 6 (`convert`) para anotar las capturas.
 - Las capturas se hicieron con **JAMOVI 2.7.27** (interfaz en español).
+
+## Licencia
+
+Salvo que se indique lo contrario, el contenido de este repositorio
+(presentación, textos, código, datos simulados y figuras) se distribuye
+bajo la licencia **Creative Commons Reconocimiento 4.0 Internacional
+(CC BY 4.0)**: puede copiarse, adaptarse y redistribuirse, también con
+fines comerciales, citando la autoría (Fco. Viciana, Universidad de
+Sevilla). Texto legal completo en [`LICENSE`](LICENSE) y resumen en
+<https://creativecommons.org/licenses/by/4.0/deed.es>.
+
+Excepciones (material de terceros, sujeto a sus propias condiciones):
+
+- Los iconos de tipos de variable de `recursos/*.png` y la interfaz que
+  aparece en las capturas de `capturas/` pertenecen al proyecto
+  [JAMOVI](https://www.jamovi.org).
+- El diagrama «Las tres patas del análisis de datos»
+  (`src/11_tres_patas.tex`) está adaptado de @AnaBayes, a partir del
+  diagrama de Drew Conway sobre la ciencia de datos.
