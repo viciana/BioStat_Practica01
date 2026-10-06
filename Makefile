@@ -105,7 +105,10 @@ img/rj_polinomio.pdf: src/28_rj_polinomio.R datos/polinomio.R datos/nubes.omv
 img/rj_logistica.pdf: src/29_rj_logistica.R datos/logistica.R datos/pacientes.omv
 	Rscript $<
 
-graficos: img/tab_forma.tex img/tab_contingencia.tex img/tab_nubes.tex $(LATEX_IMG) img/rj_cualitativa.pdf img/rj_diversidad.pdf img/rj_histogramas.pdf img/rj_densidad.pdf img/rj_cajas.pdf img/rj_centralidad.pdf img/rj_asimetria.pdf img/rj_curtosis.pdf img/rj_otras.pdf img/rj_estratos.pdf img/rj_nubes.pdf img/rj_spearman.pdf img/rj_estratificada.pdf img/rj_recta.pdf img/rj_transforma.pdf img/rj_polinomio.pdf img/rj_logistica.pdf
+img/pearson_r_demo.pdf: src/30_rj_pearson.R datos/pearson.R
+	Rscript $<
+
+graficos: img/tab_forma.tex img/tab_contingencia.tex img/tab_nubes.tex $(LATEX_IMG) img/rj_cualitativa.pdf img/rj_diversidad.pdf img/rj_histogramas.pdf img/rj_densidad.pdf img/rj_cajas.pdf img/rj_centralidad.pdf img/rj_asimetria.pdf img/rj_curtosis.pdf img/rj_otras.pdf img/rj_estratos.pdf img/rj_nubes.pdf img/rj_spearman.pdf img/rj_estratificada.pdf img/rj_recta.pdf img/rj_transforma.pdf img/rj_polinomio.pdf img/rj_logistica.pdf img/pearson_r_demo.pdf
 
 ## Capturas de jamovi anotadas -------------------------------------------
 img/c01_csv_importado.png: src/04_anota_capturas.sh $(wildcard capturas/*.png)
@@ -116,7 +119,7 @@ capturas: img/c01_csv_importado.png
 ## Presentaciones --------------------------------------------------------
 practica01.pdf: practica01.org myconfbeamer.org img/c01_csv_importado.png \
                 img/tab_forma.tex img/tab_contingencia.tex img/tab_nubes.tex $(LATEX_IMG) \
-                img/rj_cualitativa.pdf datos/cualitativa.R img/rj_diversidad.pdf img/rj_histogramas.pdf img/rj_densidad.pdf img/rj_cajas.pdf img/rj_centralidad.pdf img/rj_asimetria.pdf img/rj_curtosis.pdf img/rj_otras.pdf img/rj_estratos.pdf img/rj_nubes.pdf img/rj_spearman.pdf img/rj_estratificada.pdf img/rj_recta.pdf img/rj_transforma.pdf img/rj_polinomio.pdf img/rj_logistica.pdf
+                img/rj_cualitativa.pdf datos/cualitativa.R img/rj_diversidad.pdf img/rj_histogramas.pdf img/rj_densidad.pdf img/rj_cajas.pdf img/rj_centralidad.pdf img/rj_asimetria.pdf img/rj_curtosis.pdf img/rj_otras.pdf img/rj_estratos.pdf img/rj_nubes.pdf img/rj_spearman.pdf img/rj_estratificada.pdf img/rj_recta.pdf img/rj_transforma.pdf img/rj_polinomio.pdf img/rj_logistica.pdf img/pearson_r_demo.pdf
 	$(EXPORTA)
 
 pdf: practica01.pdf

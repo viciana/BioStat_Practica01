@@ -14,8 +14,10 @@ plot(x, y, pch = 21, bg = col, col = "grey30", cex = 0.8, las = 1, bty = "l",
      xlab = "X", ylab = "Y7",
      main = sprintf("Datos originales\nPearson r = %.2f   Spearman ρ = %.2f",
                     cor(x, y), cor(x, y, method = "spearman")))
+abline(lm(y ~ x), col = "#C0392B", lwd = 2)
 # Spearman = Pearson calculado sobre los rangos (en JAMOVI: Calcular con RANK())
 plot(rank(x), rank(y), pch = 21, bg = col, col = "grey30", cex = 0.8, las = 1, bty = "l",
      xlab = "RANK(X)", ylab = "RANK(Y7)",
      main = sprintf("Rangos\nPearson de los rangos = %.2f = ρ", cor(rank(x), rank(y))))
+abline(lm(rank(y) ~ rank(x)), col = "#C0392B", lwd = 2)
 par(op)

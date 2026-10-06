@@ -65,7 +65,7 @@
 [[file:./img/tipos_variables.pdf]]
 
 * Carga y manipulación de datos con una herramienta informática
-** Herramienta informática sencilla de análisis estadístico
+** Herramienta sencilla de análisis estadístico
 
 \footnotesize
 \setbeamerfont{itemize/enumerate subbody}{size=\footnotesize}
@@ -85,7 +85,7 @@
     manipulación, representación gráfica y análisis de datos que tiene
     la consola de R.
 
-** Familiarizándonos con el interfaz de JAMOVI
+** JAMOVI: Ventanas, Pestaña, Botones, menus \ldots
 
 \centering \includegraphics[width=.99\textwidth]{recursos/DatosEnJamovi.pdf}
 
@@ -239,17 +239,6 @@ faltante sigue siendo faltante.
 El botón /fx/ lista funciones y variables; al seleccionar una se
 muestra su ayuda. ~Z(Peso, group_by=Sexo)~ estandariza dentro de cada sexo.
 
-** Fichero «omv» con descripciones, tipos y etiquetas
-
-\centering
-#+ATTR_LATEX: :height 0.60\textheight :center nil
-[[file:./img/c11_omv_variables.png]]
-
-\raggedright\scriptsize
-El formato ~.omv~ ([[https://epidemos.es/bs2026/pacientes.omv][pacientes.omv]]) guarda además los *metadatos*: tipo de
-medida, etiquetas de las categorías, descripciones \circled{1},
-variables calculadas, filtros… y los análisis realizados.
-
 ** Filtrando los datos: subconjuntos del data.set
 
 \centering
@@ -259,8 +248,8 @@ variables calculadas, filtros… y los análisis realizados.
 \raggedright\scriptsize
 /Datos/ → /Filtros/: ~Sexo == "Mujer"~ (o ~Sexo == 2~) \circled{1}. Las
 filas excluidas se ven en gris; la barra inferior cuenta las filtradas
-\circled{2}. ¡Ojo! Los análisis *y las funciones como ~Z()~* se
-recalculan solo con las filas activas.
+\circled{2}. Los análisis (resultados) y las funciones se recalculan
+solo con las filas activas.
 
 ** Déficit de JAMOVI: combinar tablas (/merge/)
 
@@ -271,8 +260,9 @@ los 200 pacientes, y en otro orden.
 
 \vspace{2mm}
 \footnotesize
-Solución: combinar los datos en una consola R, con el paquete
-[[https://cran.r-project.org/package=jmvReadWrite][jmvReadWrite]], y crear una nueva tabla con los datos fusionados:
+Solución: hacerlo con otra herramienta, por ejemplo combinar los datos
+en una consola R con el paquete
+[[https://cran.r-project.org/package=jmvReadWrite][jmvReadWrite]], creando una nueva tabla con los datos fusionados:
 
 #+begin_src R
 library(jmvReadWrite)
@@ -321,7 +311,18 @@ Abre [[https://epidemos.es/bs2026/pacientes.csv][pacientes.csv]] en JAMOVI y:
 
 \scriptsize
 Si te pierdes, en [[https://epidemos.es/bs2026/pacientes.omv][pacientes.omv]] tienes la tabla ya etiquetada.
-Solución (con todas las variables creadas y el filtro): [[https://epidemos.es/bs2026/soluciones.omv][soluciones.omv]].
+Solución (con las nuevas variables creadas incluyendo el filtro): [[https://epidemos.es/bs2026/soluciones.omv][soluciones.omv]].
+
+** Fichero «omv» con descripciones, tipos y etiquetas
+
+\centering
+#+ATTR_LATEX: :height 0.60\textheight :center nil
+[[file:./img/c11_omv_variables.png]]
+
+\raggedright\scriptsize
+El formato ~.omv~ ([[https://epidemos.es/bs2026/pacientes.omv][pacientes.omv]]) guarda además los *metadatos*: tipo de
+medida, etiquetas de las categorías, descripciones \circled{1},
+variables calculadas, filtros… y los análisis realizados.
 
 ** Tabla de datos con variables derivadas
 
@@ -375,8 +376,7 @@ Para una variable con categorías $c_1, \dots, c_k$ observada en $n$ individuos:
 \captura{img/j01_tabla_frecuencias.png}{0.92\textwidth}
 
 \raggedright\scriptsize
-JAMOVI: /Análisis → Exploración → Descriptivas/, marcar /Tablas de
-frecuencias/ \circled{1}. Las acumuladas solo tienen sentido si hay orden (Estudios).
+@@latex:\cajainlinea{JAMOVI: Análisis → Exploración → Descriptivas, marcar Tablas de frecuencias \circled{1}.}@@ Las acumuladas \circled{2} solo tienen sentido si hay orden (Estudios).
 
 ** Gráficos para variables cualitativas: barras y sectores
 
@@ -389,7 +389,11 @@ frecuencias/ \circled{1}. Las acumuladas solo tienen sentido si hay orden (Estud
   fácilmente categorías entre sí. Es el gráfico recomendado.
 + *Sectores*: el ángulo es proporcional a la frecuencia; útil solo con
   pocas categorías, porque el ojo compara mal ángulos y áreas.
-+ En JAMOVI: /Descriptivas → Gráficos → Gráfico de barras/.
+
+#+begin_recuadro
+\footnotesize
+En JAMOVI: /Descriptivas → Gráficos → Gráfico de barras/.
+#+end_recuadro
 
 ** Gráficos mejorados con R en JAMOVI (editor Rj)
 
@@ -501,9 +505,15 @@ Con [[https://epidemos.es/bs2026/categorias.omv][categorias.omv]]:
   barras.
 + *Curva de densidad*: versión suavizada del histograma (el área bajo
   la curva vale 1). No depende de dónde empiezan las clases.
-+ En JAMOVI: /Descriptivas → Gráficos → Histograma/ y /Densidad/.
-+ Con R: código [[https://epidemos.es/bs2026/densidad.R][densidad.R]] (R o Rj; clic en el gráfico) y datos
-  [[https://epidemos.es/bs2026/pacientes.omv][pacientes.omv]] (Talla).
+#+begin_recuadro
+\footnotesize
+En JAMOVI: /Descriptivas → Gráficos → Histograma/ y /Densidad/.
+#+end_recuadro
+
+#+begin_recuadronaranja
+\footnotesize
+Con R: código [[https://epidemos.es/bs2026/densidad.R][densidad.R]] (R o Rj; clic en el gráfico) y datos  [[https://epidemos.es/bs2026/pacientes.omv][pacientes.omv]] (Talla).
+#+end_recuadronaranja
 
 ** Diagrama de caja y bigotes, y violín
 
@@ -515,8 +525,10 @@ Con [[https://epidemos.es/bs2026/categorias.omv][categorias.omv]]:
 + Los *bigotes* llegan hasta el último dato a menos de 1.5 RIC de la
   caja; los que quedan fuera se marcan como *atípicos*.
 + El *violín* añade la forma de la distribución (curva de densidad).
-+ Con R: código [[https://epidemos.es/bs2026/cajas.R][cajas.R]] (R o Rj; clic en el gráfico) y datos
-  [[https://epidemos.es/bs2026/pacientes.omv][pacientes.omv]] (Triglicéridos).
+#+begin_recuadronaranja
+\tiny
+Con R: código [[https://epidemos.es/bs2026/cajas.R][cajas.R]] (R o Rj; clic en el gráfico) y datos   [[https://epidemos.es/bs2026/pacientes.omv][pacientes.omv]] (Triglicéridos).
+#+end_recuadronaranja
 
 ** Medidas de tendencia central
 
@@ -531,8 +543,10 @@ Con [[https://epidemos.es/bs2026/categorias.omv][categorias.omv]]:
   de densidad.
 + Triglicéridos tiene asimetría positiva: la cola derecha arrastra la media por encima
   de la mediana. La dispersión, como media ± DE o como RIC.
-+ Con R: código [[https://epidemos.es/bs2026/centralidad.R][centralidad.R]] (R o Rj; clic en el gráfico) y datos
-  [[https://epidemos.es/bs2026/pacientes.omv][pacientes.omv]] (Triglicéridos).
+#+begin_recuadronaranja
+\tiny
+Con R: código [[https://epidemos.es/bs2026/centralidad.R][centralidad.R]] (R o Rj; clic en el gráfico) y datos   [[https://epidemos.es/bs2026/pacientes.omv][pacientes.omv]] (Triglicéridos).
+#+end_recuadronaranja
 
 ** Medidas de dispersión
 
@@ -569,8 +583,10 @@ $\displaystyle\; g_1 = \frac{\frac{1}{n}\sum_{i=1}^{n} (x_i - \bar{x})^3}{\left[
 + JAMOVI da $G_1$, una versión de $g_1$ corregida para muestras.
 + Líneas: \textcolor{BrickRed}{media} (continua), \textcolor{NavyBlue}{mediana} (discontinua),
   \textcolor{ForestGreen}{moda} (punteada).
-+ Con R: código [[https://epidemos.es/bs2026/asimetria.R][asimetria.R]] (R o Rj; clic en el gráfico) y datos
-  [[https://epidemos.es/bs2026/forma.omv][forma.omv]] (V1, V2, V3).
+#+begin_recuadronaranja
+\tiny
+Con R: código [[https://epidemos.es/bs2026/asimetria.R][asimetria.R]] (R o Rj; clic en el gráfico) y datos   [[https://epidemos.es/bs2026/forma.omv][forma.omv]] (V1, V2, V3).
+#+end_recuadronaranja
 
 ** Coeficiente de apuntamiento (curtosis)
 
@@ -586,8 +602,10 @@ $\displaystyle\; g_2 = \frac{\frac{1}{n}\sum (x_i - \bar{x})^4}{\left[\frac{1}{n
 + $g_2<0$ *platicúrtica*: más aplanada y colas más cortas.
 + Línea \textcolor{BrickRed}{discontinua}: curva normal con la misma media y desviación estándar. Las tres
   variables tienen media 50 y DE 10: solo cambia la /forma/. JAMOVI da $G_2$ (corregido para muestras).
-+ Con R: código [[https://epidemos.es/bs2026/curtosis.R][curtosis.R]] (R o Rj; clic en el gráfico) y datos
-  [[https://epidemos.es/bs2026/forma.omv][forma.omv]] (V4, V5, V6).
+#+begin_recuadronaranja
+\tiny
+Con R: código [[https://epidemos.es/bs2026/curtosis.R][curtosis.R]] (R o Rj; clic en el gráfico) y datos   [[https://epidemos.es/bs2026/forma.omv][forma.omv]] (V4, V5, V6).
+#+end_recuadronaranja
 
 ** Curtosis y asimetría no explican todas las formas
 
@@ -601,8 +619,10 @@ $\displaystyle\; g_2 = \frac{\frac{1}{n}\sum (x_i - \bar{x})^4}{\left[\frac{1}{n
   normal con la misma media y DE.
 + Moraleja: *los índices resumen, el histograma muestra*. Mira siempre el gráfico antes
   de interpretar un coeficiente.
-+ Con R: código [[https://epidemos.es/bs2026/otras.R][otras.R]] (R o Rj; clic en el gráfico) y datos
-  [[https://epidemos.es/bs2026/forma.omv][forma.omv]] (V7, V8).
+#+begin_recuadronaranja
+\tiny
+Con R: código [[https://epidemos.es/bs2026/otras.R][otras.R]] (R o Rj; clic en el gráfico) y datos   [[https://epidemos.es/bs2026/forma.omv][forma.omv]] (V7, V8).
+#+end_recuadronaranja
 
 ** Estadísticos descriptivos en JAMOVI
 
@@ -610,7 +630,7 @@ $\displaystyle\; g_2 = \frac{\frac{1}{n}\sum (x_i - \bar{x})^4}{\left[\frac{1}{n
 \captura{img/j03_opciones_estadisticas.png}{0.72\textwidth}
 
 \raggedright\footnotesize
-/Análisis → Exploración → Descriptivas → Estadísticas/: centralidad
+@@latex:\cajainlinea{Análisis → Exploración → Descriptivas → Estadísticas:}@@ centralidad
 (media, mediana, moda), dispersión (DE, varianza, rango, RIC),
 percentiles, y distribución: asimetría y curtosis \circled{1}, con sus
 errores estándar \circled{2}.
@@ -661,9 +681,15 @@ Si no conservas las variables creadas en el Ejercicio 01, usa [[https://epidemos
 \raggedright\tiny
 + Curvas de densidad *superpuestas*: comparan la forma y la posición.
 + Cajas y violines *uno junto a otro*: comparan medianas, dispersión y atípicos.
-+ En JAMOVI: en /Descriptivas/ poner la variable cualitativa en /Separa por/.
-+ Con R: código [[https://epidemos.es/bs2026/estratos.R][estratos.R]] (R o Rj; clic en el gráfico) y datos
-  [[https://epidemos.es/bs2026/pacientes.omv][pacientes.omv]] (Talla y Sexo).
+#+begin_recuadro
+\tiny
+En JAMOVI: en /Descriptivas/ poner la variable cualitativa en /Separa por/.
+#+end_recuadro
+
+#+begin_recuadronaranja
+\tiny
+Con R: código [[https://epidemos.es/bs2026/estratos.R][estratos.R]] (R o Rj; clic en el gráfico) y datos   [[https://epidemos.es/bs2026/pacientes.omv][pacientes.omv]] (Talla y Sexo).
+#+end_recuadronaranja
 
 ** Estadísticos por estrato
 
@@ -681,8 +707,11 @@ La talla media de los hombres supera en unos 13 cm a la de las
 mujeres, con una dispersión parecida.
 
 \vspace{2mm}
+#+begin_recuadro
+\footnotesize
 /Descriptivas/ → variable cualitativa en /Separa por/: una
 columna por grupo \circled{1}.
+#+end_recuadro
 
 *** JAMOVI
     :PROPERTIES:
@@ -771,8 +800,11 @@ tiene HTA; entre los que no lo tienen, solo el 16.8 %.
     :END:
 
 \tiny
+#+begin_recuadro
+\tiny
 /Análisis → Frecuencias → Tablas de contingencia → Muestras
 independientes/:
+#+end_recuadro
 
 + Variables en /Filas/ y /Columnas/ \circled{1}.
 + En /Celdas/, porcentajes por /Fila/ \circled{2}. El $\chi^2$ sale
@@ -815,30 +847,16 @@ Cada individuo es un punto $(x_i, y_i)$. En la nube se busca: *sentido*
 
 \vspace{1mm}
 \centering
-\captura{img/j08_dispersion.png}{0.80\textwidth}
+\captura{img/j08_dispersion.png}{0.74\textwidth}
 
 \raggedright
-JAMOVI: /Exploración → Gráfico de dispersión/. En /Línea de
+@@latex:\cajainlinea{JAMOVI: Exploración → Gráfico de dispersión.}@@ En /Línea de
 regresión/ marcar /Mostrar línea/ \circled{1} (método /Lineal/). En
 /Variables de agrupación/ \circled{2}, una cualitativa opcional.
 
 \scriptsize
 Datos: [[https://epidemos.es/bs2026/nubes.omv][nubes.omv]]: una variable $X$ común y siete
 respuestas $Y_1, \dots, Y_7$ con formas de nube distintas.
-
-** Diferentes formas de la nube de puntos
-
-#+BEAMER: \makebox[\textwidth][c]{\href{https://epidemos.es/bs2026/nubes.R}{\includegraphics[width=1.1\textwidth]{img/rj_nubes.pdf}}}
-
-\raggedright\tiny
-+ *Y1*: nube redonda, sin patrón: $r \approx 0$.
-+ *Y2*: al crecer $X$ crece $Y$: correlación *positiva*. *Y3*: al crecer $X$ decrece $Y$:
-  correlación *negativa*.
-+ *Y5*: relación muy fuerte, pero *no lineal*: sube y baja, y $r \approx 0$.
-+ Moraleja: $r = 0$ *no* significa «no hay relación», sino «no hay relación \emph{lineal}».
-  Mira siempre la nube.
-+ Con R: código [[https://epidemos.es/bs2026/nubes.R][nubes.R]] (R o Rj; clic en el gráfico) y datos
-  [[https://epidemos.es/bs2026/nubes.omv][nubes.omv]] (X, Y1, Y2, Y3, Y5).
 
 ** Coeficiente de correlación de Pearson
 
@@ -856,19 +874,31 @@ s_{xy} = \frac{1}{n-1}\sum (x_i - \bar{x})(y_i - \bar{y}) \quad \text{(covarianz
   o °F).
 + Es *simétrico*: $r(X,Y) = r(Y,X)$. No distingue causa y efecto.
 
-\vspace{1mm}
-\scriptsize
 \centering
-\begin{tabular}{lccccc}
-\toprule
-$|r|$ & $< 0.1$ & $0.1$--$0.3$ & $0.3$--$0.5$ & $0.5$--$0.7$ & $> 0.7$ \\
-\midrule
-Correlación & nula & débil & moderada & notable & fuerte \\
-\bottomrule
-\end{tabular}
+@@latex:\href{https://epidemos.es/bs2026/pearson.R}{\includegraphics[height=0.40\textheight]{img/pearson_r_demo.pdf}}@@
 
-\raggedright
-(Orientativo: lo que es «fuerte» depende del campo de estudio.)
+\raggedright\tiny
+Misma recta (misma $a$ y $b$), distinta dispersión: $r$ mide el
+*ajuste* a la recta, no la recta en sí. Con R: código
+[[https://epidemos.es/bs2026/pearson.R][pearson.R]] (clic en el gráfico; simulación con semilla fija, sin
+data.set).
+
+** Diferentes formas de la nube de puntos
+
+#+BEAMER: \makebox[\textwidth][c]{\href{https://epidemos.es/bs2026/nubes.R}{\includegraphics[width=1.1\textwidth]{img/rj_nubes.pdf}}}
+
+\raggedright\tiny
++ *Y1*: nube redonda, sin patrón: $r \approx 0$.
++ *Y2*: al crecer $X$ crece $Y$: correlación *positiva*. *Y3*: al crecer $X$ decrece $Y$:
+  correlación *negativa*.
++ *Y5*: relación muy fuerte, pero *no lineal*: sube y baja, y $r \approx 0$.
++ Moraleja: $r = 0$ *no* significa «no hay relación», sino «no hay relación \emph{lineal}».
+  Mira siempre la nube.
+
+#+begin_recuadronaranja
+\tiny
+Con R: código [[https://epidemos.es/bs2026/nubes.R][nubes.R]] (R o Rj; clic en el gráfico) y datos   [[https://epidemos.es/bs2026/nubes.omv][nubes.omv]] (X, Y1, Y2, Y3, Y5).
+#+end_recuadronaranja
 
 ** Coeficiente de correlación de Spearman
 
@@ -882,20 +912,29 @@ Correlación & nula & débil & moderada & notable & fuerte \\
 + Es *robusto*: un valor extremo solo puede ser el último rango. Ejemplo (Y7): una nube sin
   relación con 6 \textcolor{BrickRed}{atípicos}, 3 en cada extremo. Pearson se deja arrastrar
   ($r = 0.29$); en los rangos los atípicos son solo esquinas ($\rho = 0.03$).
-+ Con R: código [[https://epidemos.es/bs2026/spearman.R][spearman.R]] (R o Rj; clic en el gráfico) y datos
-  [[https://epidemos.es/bs2026/nubes.omv][nubes.omv]] (X, Y7).
+
+#+begin_recuadronaranja
+\scriptsize
+Con R: código [[https://epidemos.es/bs2026/spearman.R][spearman.R]] (R o Rj; clic en el gráfico) y datos  [[https://epidemos.es/bs2026/nubes.omv][nubes.omv]] (X, Y7).
+#+end_recuadronaranja
 
 ** Matriz de correlaciones en JAMOVI
 
 \centering
 \captura{img/j09_matriz_correlaciones.png}{\textwidth}
 
-\raggedright\footnotesize
-/Regresión → Matriz de correlación/: admite muchas variables a la
-vez. Marcar /Pearson/ y /Spearman/ \circled{1}. /Señalar correlaciones
-significativas/ \circled{2} añade asteriscos (la significación se verá
-en las próximas prácticas). /Gráfico → Matriz de correlación/
-\circled{3} dibuja todas las nubes por parejas.
+#+begin_recuadro
+\raggedright\scriptsize
+/Regresión → Matriz de correlación/:
+#+end_recuadro
+
+\raggedright\scriptsize
+Admite muchas variables a la vez. Marcar /Pearson/ y /Spearman/
+\circled{1}. /Señalar correlaciones significativas/ \circled{2} añade
+asteriscos (la significación se verá en las próximas
+prácticas). /Gráfico → Matriz de correlación/ \circled{3} dibuja todas
+las nubes por parejas.
+
 
 \vspace{1mm}
 Fíjate en Y5 ($r \approx 0$), Y6 (Spearman > Pearson) e Y7 (Pearson
@@ -903,17 +942,23 @@ significativo, Spearman no).
 
 ** Nube de puntos estratificada (Peso y Talla por Sexo)
 
-#+BEAMER: \makebox[\textwidth][c]{\href{https://epidemos.es/bs2026/estratificada.R}{\includegraphics[width=0.74\textwidth]{img/rj_estratificada.pdf}}}
+#+BEAMER: \makebox[\textwidth][c]{\href{https://epidemos.es/bs2026/estratificada.R}{\includegraphics[width=0.64\textwidth]{img/rj_estratificada.pdf}}}
 
 \raggedright\scriptsize
 + Dentro de cada sexo, la correlación es *menor* que en el conjunto (línea
   \textcolor{BrickRed}{roja}): parte de la relación global se debe a que los hombres
   son a la vez más altos y más pesados.
 + Una tercera variable puede crear, aumentar o esconder una correlación.
-+ En JAMOVI: /Exploración → Gráfico de dispersión/, Sexo en /Variables de agrupación/ y
-  /Línea de regresión/ lineal: una recta por sexo (la de todos, en otro gráfico sin agrupar).
-+ Con R: código [[https://epidemos.es/bs2026/estratificada.R][estratificada.R]] (R o Rj; clic en el gráfico) y datos
-  [[https://epidemos.es/bs2026/pacientes.omv][pacientes.omv]] (Peso, Talla y Sexo).
+
+#+begin_recuadro
+\scriptsize
+En JAMOVI: /Exploración → Gráfico de dispersión/, Sexo en /Variables de agrupación/ y   /Línea de regresión/ lineal: una recta por sexo (la de todos, en otro gráfico sin agrupar).
+#+end_recuadro
+
+#+begin_recuadronaranja
+\scriptsize
+Con R: código [[https://epidemos.es/bs2026/estratificada.R][estratificada.R]] (R o Rj; clic en el gráfico) y datos   [[https://epidemos.es/bs2026/pacientes.omv][pacientes.omv]] (Peso, Talla y Sexo).
+#+end_recuadronaranja
 
 ** *Ejercicio 06*: correlación
 
@@ -963,8 +1008,11 @@ Ahora $X$ *explica* (predice) $Y$: $\hat{y} = a + b\,x$
   cuando $X = 0$. Muchas veces no tiene sentido (¿peso con talla 0?).
 + A diferencia de $r$, la recta *no* es simétrica ($Y$ sobre $X$
   $\neq$ $X$ sobre $Y$).
-+ Con R: código [[https://epidemos.es/bs2026/recta.R][recta.R]] (R o Rj; clic en el gráfico) y
-  datos [[https://epidemos.es/bs2026/nubes.omv][nubes.omv]] (X, Y4).
+
+#+begin_recuadronaranja
+\scriptsize
+Con R: código [[https://epidemos.es/bs2026/recta.R][recta.R]] (R o Rj; clic en el gráfico) y   datos [[https://epidemos.es/bs2026/nubes.omv][nubes.omv]] (X, Y4).
+#+end_recuadronaranja
 
 ** Regresión lineal en JAMOVI: Peso según Talla
 
@@ -972,7 +1020,7 @@ Ahora $X$ *explica* (predice) $Y$: $\hat{y} = a + b\,x$
 \captura{img/j10_regresion_lineal.png}{0.80\textwidth}
 
 \raggedright\footnotesize
-/Regresión → Regresión lineal/: /Variable dependiente/ = Peso,
+@@latex:\cajainlinea{\emph{Regresión → Regresión lineal}:}@@ /Variable dependiente/ = Peso,
 /Covariables/ = Talla \circled{1}. En /Coeficientes del Modelo/
 \circled{2}: $\widehat{\text{Peso}} = -79.2 + 0.865 \cdot \text{Talla}$;
 en /Medidas de Ajuste del Modelo/ \circled{3}: $R^2 = 0.45$.
@@ -1015,8 +1063,11 @@ bajo pese a $r = 0.29$, y por culpa de 6 puntos.
   *multiplica* $Y6$ por $10^{0.0205} = 1.048$ (un +4.8 %).
 + Típico en medicina: triglicéridos, concentraciones, cargas virales.
   En JAMOVI, /Transformar/ con ~LOG10($source)~ (Ejercicio 01).
-+ Con R: código [[https://epidemos.es/bs2026/transforma.R][transforma.R]] (R o Rj; clic en el gráfico) y datos
-  [[https://epidemos.es/bs2026/nubes.omv][nubes.omv]] (X, Y6).
+
+#+begin_recuadronaranja
+\scriptsize
+Con R: código [[https://epidemos.es/bs2026/transforma.R][transforma.R]] (R o Rj; clic en el gráfico) y datos   [[https://epidemos.es/bs2026/nubes.omv][nubes.omv]] (X, Y6).
+#+end_recuadronaranja
 
 ** Regresión con curvas polinómicas
 
@@ -1049,8 +1100,11 @@ máximo está en $x = 6.42 / (2 \cdot 0.0644) \approx 50$.
 ¡Ojo! Fuera del rango de los datos, un polinomio da predicciones absurdas.
 
 \vspace{1mm}
+#+begin_recuadronaranja
+\scriptsize
 Con R: código [[https://epidemos.es/bs2026/polinomio.R][polinomio.R]] (R o Rj; clic en el gráfico) y datos
 [[https://epidemos.es/bs2026/nubes.omv][nubes.omv]] (X, Y5).
+#+end_recuadronaranja
 
 ** Regresión múltiple: más de una variable explicativa
 
@@ -1139,8 +1193,10 @@ $p = P(Y = 1)$ según $X$.
   y la probabilidad sigue una curva en «S», siempre entre 0 y 1.
 + $e^{b}$ es una *odds ratio* (OR), como en las tablas 2×2: cuánto se
   multiplican las odds por cada unidad más de $X$.
-+ Con R: código [[https://epidemos.es/bs2026/logistica.R][logistica.R]] (R o Rj; clic en el gráfico) y
-  datos [[https://epidemos.es/bs2026/pacientes.omv][pacientes.omv]] (HTA, Edad).
+#+begin_recuadronaranja
+\scriptsize
+Con R: código [[https://epidemos.es/bs2026/logistica.R][logistica.R]] (R o Rj; clic en el gráfico) y   datos [[https://epidemos.es/bs2026/pacientes.omv][pacientes.omv]] (HTA, Edad).
+#+end_recuadronaranja
 
 ** Regresión logística en JAMOVI: HTA ~ Edad + IMC
 
@@ -1148,7 +1204,7 @@ $p = P(Y = 1)$ según $X$.
 \captura{img/j12_logistica.png}{0.84\textwidth}
 
 \raggedright\scriptsize
-/Regresión → Regresión logística binomial/: /Variable dependiente/ =
+@@latex:\cajainlinea{Regresión → Regresión logística binomial:}@@ /Variable dependiente/ =
 HTA, /Covariables/ = Edad e IMC \circled{1}; en /Coeficientes del
 Modelo/ marcar /Razón de odds/ \circled{2}. La nota \circled{3} dice
 qué se modela («Sí» frente a «No»); si sale al revés (OR < 1), cambiar

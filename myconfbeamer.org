@@ -37,6 +37,11 @@
 #+LATEX_HEADER: \AtBeginSubsection{\frame{\subsectionpage}}
 #+LATEX_HEADER: \AtBeginSubsubsection{\frame{\subsubsectionpage}}
 #+LATEX_HEADER: \usepackage{tcolorbox}
+#+LATEX_HEADER: \definecolor{limalimon}{RGB}{234,246,178}
+#+LATEX_HEADER: \newtcolorbox{recuadro}{colback=limalimon, colframe=limalimon!55!black, boxrule=0.4pt, arc=1mm, left=2mm, right=2mm, top=0.8mm, bottom=0.8mm, before skip=0.5mm, after skip=0.5mm}
+#+LATEX_HEADER: \definecolor{naranjaclaro}{RGB}{255,214,153}
+#+LATEX_HEADER: \newtcolorbox{recuadronaranja}{colback=naranjaclaro, colframe=naranjaclaro!55!black, boxrule=0.4pt, arc=1mm, left=2mm, right=2mm, top=0.8mm, bottom=0.8mm, before skip=0.5mm, after skip=0.5mm}
+#+LATEX_HEADER: \newtcbox{\cajainlinea}{on line, colback=limalimon, colframe=limalimon!55!black, boxrule=0.4pt, arc=1mm, left=1mm, right=1mm, top=0.3mm, bottom=0.3mm}
 
 COMMENT #+LATEX_HEADER: \DefineVerbatimEnvironment{verbatim}{Verbatim}{fontsize=\tiny, formatcom = {\color{black!70}}}
 #+PROPERTY:  tangle yes
