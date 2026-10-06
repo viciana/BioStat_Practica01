@@ -139,6 +139,29 @@ el tipo de cada columna por su contenido (icono junto al nombre
 
 \centering \includegraphics[width=.95\textwidth]{recursos/TipoDatoMedida.pdf}
 
+** *Ejercicio 01*: preparar la tabla de datos
+
+\footnotesize
+Abre [[https://epidemos.es/bs2026/pacientes.csv][pacientes.csv]] en JAMOVI y:
+
+1. Etiqueta Sexo (1 Hombre, 2 Mujer) y Fumador (0 Nunca, 1 Exfumador,
+   2 Fumador). Añade una descripción a cada variable.
+2. Pon Estudios como *ordinal* con sus etiquetas (1 Sin estudios,
+   2 Primarios, 3 Secundarios, 4 FP, 5 Universitarios).
+3. Calcula el *IMC* $= \text{Peso}/(\text{Talla}/100)^2$ y crea
+   /FumaActual/ (1 si fuma actualmente, 0 si no).
+4. Con /Transformar/, agrupa la Edad en <35, 35–54 y 55 y más, y el
+   IMC en Bajo peso (<18,5), Normal [18,5–25), Sobrepeso [25–30) y
+   Obesidad ($\ge 30$).
+5. Crea ~LOG10()~ de Colesterol y Triglicéridos con una sola
+   transformación.
+6. Crea un filtro para quedarte solo con las mujeres no fumadoras.
+   ¿Cuántas filas quedan?
+
+\scriptsize
+Si te pierdes, en [[https://epidemos.es/bs2026/pacientes.omv][pacientes.omv]] tienes la tabla ya etiquetada.
+Solución (con las nuevas variables creadas incluyendo el filtro): [[https://epidemos.es/bs2026/soluciones.omv][soluciones.omv]].
+
 ** Re-etiquetando las categorías de una variable
 
 \centering
@@ -289,29 +312,6 @@ datos faltantes.
 \vspace{2mm}
 Los ficheros de datos de esta práctica se han /simulado/ en R y se han
 guardado directamente en formato ~.omv~ con ~jmvReadWrite~.
-
-** *Ejercicio 01*: preparar la tabla de datos
-
-\footnotesize
-Abre [[https://epidemos.es/bs2026/pacientes.csv][pacientes.csv]] en JAMOVI y:
-
-1. Etiqueta Sexo (1 Hombre, 2 Mujer) y Fumador (0 Nunca, 1 Exfumador,
-   2 Fumador). Añade una descripción a cada variable.
-2. Pon Estudios como *ordinal* con sus etiquetas (1 Sin estudios,
-   2 Primarios, 3 Secundarios, 4 FP, 5 Universitarios).
-3. Calcula el *IMC* $= \text{Peso}/(\text{Talla}/100)^2$ y crea
-   /FumaActual/ (1 si fuma actualmente, 0 si no).
-4. Con /Transformar/, agrupa la Edad en <35, 35–54 y 55 y más, y el
-   IMC en Bajo peso (<18,5), Normal [18,5–25), Sobrepeso [25–30) y
-   Obesidad ($\ge 30$).
-5. Crea ~LOG10()~ de Colesterol y Triglicéridos con una sola
-   transformación.
-6. Crea un filtro para quedarte solo con las mujeres no fumadoras.
-   ¿Cuántas filas quedan?
-
-\scriptsize
-Si te pierdes, en [[https://epidemos.es/bs2026/pacientes.omv][pacientes.omv]] tienes la tabla ya etiquetada.
-Solución (con las nuevas variables creadas incluyendo el filtro): [[https://epidemos.es/bs2026/soluciones.omv][soluciones.omv]].
 
 ** Fichero «omv» con descripciones, tipos y etiquetas
 
@@ -980,7 +980,7 @@ Con [[https://epidemos.es/bs2026/pacientes.omv][pacientes.omv]]:
    /Datos → Filtros/ o con /Variables de agrupación/ en el gráfico).
 
 * Regresión lineal simple
-** La recta de regresión
+** La recta de regresión: su pendiente (b)
 
 *** Gráfico
     :PROPERTIES:
